@@ -1,4 +1,4 @@
-package EstruturaDadosII;
+package EstruturaDadosII.tabelaHash;
 
 import java.util.LinkedList;
 

@@ -1,6 +1,6 @@
 
 
-import EstruturaDadosII.TabelaHash;
+import EstruturaDadosII.tabelaHash.TabelaHash;
 
 
 public class Main {
