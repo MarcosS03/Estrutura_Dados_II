@@ -51,7 +51,7 @@ public class TabelaHash {
     }
 
     //classe com metodo de entrada, para criar uma chave e seu valor.
-    private static class Entry {
+    public static class Entry {
         int key;
         String value;
 
@@ -60,4 +60,6 @@ public class TabelaHash {
             this.value = value;
         }
     }
+
+
 }

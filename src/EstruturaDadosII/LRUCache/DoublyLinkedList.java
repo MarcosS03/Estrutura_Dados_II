@@ -1,40 +1,38 @@
 package EstruturaDadosII.LRUCache;
 
-public class DoublyLinkedList <k, v>{
+public class DoublyLinkedList<k, v> {
 
-    private Node<k, v> head;
-    private Node<k, v> tail;
+    private Node head;
+    private Node tail;
 
     public DoublyLinkedList() {
-        head = new Node<>(null, null);
-        tail = new Node<>(null, null);
-        head.next = tail;
-        tail.prev = head;
+        head.proximo = tail;
+        tail.anterior = head;
     }
 
-    public void addFirst(Node<K, V> node) {
-        node.next = head.next;
-        node.prev = head;
-        head.next.prev = node;
-        head.next = node;
+    public void addFirst(Node node) {
+        node.proximo = head.proximo;
+        node.anterior = head;
+        head.proximo.anterior = node;
+        head.proximo = node;
     }
 
-    public void moveToFront(Node<K, V> node) {
+    public void moveToFront(Node node) {
         remove(node);
         addFirst(node);
     }
 
-    public Node<K, V> removeLast() {
-        if (tail.prev == head) {
+    public Node removeLast() {
+        if (tail.anterior == head) {
             return null;
         }
-        Node<K, V> node = tail.prev;
+        Node node = tail.anterior;
         remove(node);
         return node;
     }
 
-    public void remove(Node<K, V> node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
+    public void remove(Node node) {
+        node.anterior.proximo = node.proximo;
+        node.proximo.anterior = node.anterior;
     }
 }

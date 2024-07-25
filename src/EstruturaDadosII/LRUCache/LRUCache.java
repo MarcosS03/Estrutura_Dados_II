@@ -5,18 +5,14 @@ import EstruturaDadosII.tabelaHash.TabelaHash;
 public class LRUCache {
 
     private int capacidadeCache;
-    private TabelaHash<K, Node<K, V>> map;
-    private DoublyLinkedList<K, V> dll;
+    private TabelaHash tabelaHash;
+    private DoublyLinkedList<Integer, String> dll;
 
-    public LRUCache(int capacity) {
-        this.capacity = ;
-        this.map = new TabelaHash();
-        this.dll = new DoublyLinkedList<put>();
-    }
 
-    public V get(K key) {
-        if (map.containsKey(key)) {
-            Node<K, V> node = map.get(key);
+
+    public String get(Integer key ) {
+        if (tabelaHash.search(key).) {
+            String node = tabelaHash.search(key);
             dll.moveToFront(node);
             return node.value;
         }
