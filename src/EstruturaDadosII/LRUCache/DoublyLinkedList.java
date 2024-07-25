@@ -1,4 +1,4 @@
-package EstruturaDadosII.tabelaHash;
+package EstruturaDadosII.LRUCache;
 
 public class DoublyLinkedList <k, v>{
 
