@@ -1,5 +1,7 @@
 package EstruturaDadosII.tabelaHash;
 
+import EstruturaDadosII.LRUCache.LRUCache;
+
 import java.util.LinkedList;
 
 public class TabelaHash {
@@ -23,6 +25,9 @@ public class TabelaHash {
 
     //adicionando metodo pela chave e valor
     public void insert(int key, String value) {
+
+        LRUCache lruCache = new LRUCache();
+        lruCache.put(key, value);
         int index = hashFunction(key);
         table[index].add(new Entry(key, value));
     }
@@ -61,5 +66,7 @@ public class TabelaHash {
         }
     }
 
-
+    public int getSize() {
+        return size;
+    }
 }

@@ -2,42 +2,57 @@ package EstruturaDadosII.LRUCache;
 
 import EstruturaDadosII.tabelaHash.TabelaHash;
 
+
+
 public class LRUCache {
 
-    private int capacidadeCache;
-    private TabelaHash tabelaHash;
+    private int capacidadeCache = 3;
+    private TabelaHash tabelaHash= new TabelaHash();
+
     private DoublyLinkedList<Integer, String> dll;
 
+    //função de hash utilizando ometodo da divisão
+    private int hashFunction(int key) {
+        return key % capacidadeCache;
+    }
 
-
-    public String get(Integer key ) {
-        if (tabelaHash.search(key).) {
+    public String get(Integer key) {
+        if (tabelaHash.search(key) != null) {
             String node = tabelaHash.search(key);
-            dll.moveToFront(node);
-            return node.value;
+            Node n = Node.class.cast(node);
+            dll.moveToFront(n);
+            return node;
         }
         return null;
     }
 
-    public void put(K key, V value) {
-        if (map.containsKey(key)) {
-            Node<K, V> node = map.get(key);
-            node.value = value;
-            dll.moveToFront(node);
-        } else {
-            if (map.size() >= capacity) {
-                Node<K, V> lru = dll.removeLast();
-                map.remove(lru.key);
+    public void put(int key, String value) {
+        int index = hashFunction(key);
+        if (tabelaHash.search(index) != null){
+            String node = tabelaHash.search(key);
+
+            Node n = Node.class.cast(node);
+            n.value = value;
+            dll.moveToFront(n);
+        } else{
+            if (tabelaHash.getSize() >= capacidadeCache) {
+                Node lru = dll.removeLast();
+
             }
-            Node<K, V> newNode = new Node<>(key, value);
+            Node newNode = new Node.NoBuild().Key(key).Value(value).build();
             dll.addFirst(newNode);
-            map.put(key, newNode);
+
         }
     }
 
+    public void setCapacidadeCache(int capacidadeCache) {
+        this.capacidadeCache = capacidadeCache;
+    }
 
 //    public static void main(String[] args) {
-//        LRUCache<Integer, String> cache = new LRUCache<>(3);
+//        LRUCache cache = new LRUCache();
+//        cache.capacidadeCache = 3;
+//
 //        cache.put(1, "one");
 //        cache.put(2, "two");
 //        cache.put(3, "three");
@@ -49,4 +64,6 @@ public class LRUCache {
 //        System.out.println(cache.get(3)); // Output: three
 //        System.out.println(cache.get(4)); // Output: four
 //    }
+
+
 }

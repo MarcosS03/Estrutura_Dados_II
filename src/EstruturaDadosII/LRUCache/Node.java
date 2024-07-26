@@ -7,6 +7,8 @@ public class Node {
     Node anterior;
 
 
+    public Node() {
+    }
 
     private Node(Integer key, String value, Node proximo, Node anterior) {
         this.key = key;
